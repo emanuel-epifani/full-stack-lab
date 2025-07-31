@@ -1,0 +1,192 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Dati necessari per creare un nuovo post"""
+input CreatePostInput {
+  """ID dell'autore del post"""
+  authorId: Int!
+
+  """Contenuto del post (opzionale per le bozze)"""
+  content: String
+
+  """Se il post deve essere pubblicato immediatamente"""
+  published: Boolean! = false
+
+  """Titolo del post"""
+  title: String!
+}
+
+"""Dati necessari per creare un nuovo utente"""
+input CreateUserInput {
+  """Email dell'utente (deve essere unica)"""
+  email: String!
+
+  """Nome completo dell'utente"""
+  name: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  """Crea un nuovo post"""
+  createPost(
+    """Dati del nuovo post"""
+    input: CreatePostInput!
+  ): Post!
+
+  """Crea un nuovo utente"""
+  createUser(
+    """Dati del nuovo utente"""
+    input: CreateUserInput!
+  ): User!
+
+  """Elimina un post"""
+  deletePost(
+    """ID del post da eliminare"""
+    id: ID!
+  ): Boolean!
+
+  """Elimina un utente e tutti i suoi post"""
+  deleteUser(
+    """ID dell'utente da eliminare"""
+    id: ID!
+  ): Boolean!
+
+  """Cambia lo stato di pubblicazione di un post"""
+  togglePostPublication(
+    """ID del post"""
+    id: ID!
+  ): Post
+
+  """Aggiorna un post esistente"""
+  updatePost(
+    """ID del post da aggiornare"""
+    id: ID!
+
+    """Nuovi dati del post"""
+    input: UpdatePostInput!
+  ): Post
+
+  """Aggiorna un utente esistente"""
+  updateUser(
+    """ID dell'utente da aggiornare"""
+    id: ID!
+
+    """Nuovi dati dell'utente"""
+    input: UpdateUserInput!
+  ): User
+}
+
+"""Rappresenta un post del blog con il suo autore"""
+type Post {
+  """Autore del post (caricato on-demand)"""
+  author: User
+
+  """ID dell'autore del post"""
+  authorId: Int!
+
+  """Contenuto del post (può essere vuoto per le bozze)"""
+  content: String
+
+  """Lunghezza del contenuto in caratteri (calcolato dinamicamente)"""
+  contentLength: Int
+
+  """Data di creazione del post"""
+  createdAt: DateTime!
+
+  """Identificativo univoco del post"""
+  id: ID!
+
+  """Indica se il post è pubblicato o è ancora una bozza"""
+  published: Boolean!
+
+  """Titolo del post"""
+  title: String!
+
+  """Data dell'ultimo aggiornamento"""
+  updatedAt: DateTime!
+}
+
+type Query {
+  """Recupera un post specifico tramite il suo ID"""
+  post(
+    """ID del post da cercare"""
+    id: ID!
+  ): Post
+
+  """Recupera tutti i post del sistema"""
+  posts: [Post!]!
+
+  """Recupera solo i post pubblicati"""
+  publishedPosts: [Post!]!
+
+  """Cerca post per titolo o contenuto"""
+  searchPosts(
+    """Termine di ricerca"""
+    searchTerm: String!
+  ): [Post!]!
+
+  """Cerca utenti per nome (case-insensitive)"""
+  searchUsers(
+    """Termine di ricerca"""
+    searchTerm: String!
+  ): [User!]!
+
+  """Recupera un utente specifico tramite il suo ID"""
+  user(
+    """ID dell'utente da cercare"""
+    id: ID!
+  ): User
+
+  """Recupera tutti gli utenti registrati nel sistema"""
+  users: [User!]!
+}
+
+"""Dati per aggiornare un post esistente (tutti i campi sono opzionali)"""
+input UpdatePostInput {
+  """Nuovo contenuto del post"""
+  content: String
+
+  """Nuovo stato di pubblicazione"""
+  published: Boolean
+
+  """Nuovo titolo del post"""
+  title: String
+}
+
+"""Dati per aggiornare un utente esistente (tutti i campi sono opzionali)"""
+input UpdateUserInput {
+  """Nuova email dell'utente"""
+  email: String
+
+  """Nuovo nome dell'utente"""
+  name: String
+}
+
+"""Rappresenta un utente del sistema con i suoi post associati"""
+type User {
+  """Data di creazione dell'account"""
+  createdAt: DateTime!
+
+  """Indirizzo email dell'utente (deve essere unico)"""
+  email: String!
+
+  """Identificativo univoco dell'utente"""
+  id: ID!
+
+  """Nome completo dell'utente"""
+  name: String!
+
+  """Numero totale di post dell'utente (calcolato dinamicamente)"""
+  postCount: Int
+
+  """Lista dei post scritti da questo utente (caricato on-demand)"""
+  posts: [Post!]
+
+  """Data dell'ultimo aggiornamento"""
+  updatedAt: DateTime!
+}
