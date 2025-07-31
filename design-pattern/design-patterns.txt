@@ -1,0 +1,49 @@
+https://refactoring.guru/design-patterns/catalog
+
+CREATIONAL
+- Factory 
+- Abstract Factory
+- Builder
+- Prototype
+- Singletonn
+
+
+STRUCTURAL
+- Adapter
+- Bridge
+- Composite
+- Decorator
+- Facade
+- Flyweight
+- Proxy
+
+BEHAVIORAL
+- Chain of responsability
+- Command
+- Iterator
+- Mediator
+- Memento
+- Observer
+- State
+- Strategy
+- Template method
+- Visitor
+
+
+Più importanti epr fullstack moderno:
+- Factory (creo Oggetti diversi a second dei parametri in input)
+- Singleton
+- Adapter
+- Decorator
+- Facade (Semplificare un sistema complesso che fa n cose dietro un’interfaccia unica)
+- Strategy
+- Observer
+
+
+| Pattern      | Scopo                                                 | Esempio reale                                |
+| ------------ | ----------------------------------------------------- | -------------------------------------------- |
+| **Factory**  | Decidere a runtime quale oggetto creare               | `PaymentClientFactory(provider)`             |
+| **Facade**   | Nascondere complessità dietro un’interfaccia semplice | `EmailService.send(to, bodyEmail)`           |
+| **Strategy** | Cambiare comportamento dinamicamente                  | `sortPosts(strategy)`                        |
+| **Builder**  | Costruire oggetti step-by-step                        | `UserBuilder().withName().withAge().build()` |
+| **Adapter**  | Rendere un'interfaccia compatibile                    | `ExternalUser → InternalDTO`                 |

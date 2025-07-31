@@ -1,0 +1,5 @@
+- implementa graphql FE+BE
+- copiati tutti i componenti da old repo dentro nuovo monorepo
+- scrivi file k8s, run inikub apply files, prova helm e aggancio headlamp
+- scrivi pipelin github action
+- capire un po di tailwind e un minimo di stati nextjs
