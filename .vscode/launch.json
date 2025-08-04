@@ -1,0 +1,39 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "FE-Next.js",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "console": "integratedTerminal",
+      "env": {
+        "PORT": "3000"
+      },
+    },
+    {
+      "name": "BE-NestJS",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/backend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start:debug"],
+      "console": "integratedTerminal",
+      "env": {
+        "PORT": "3001"
+      },
+    }
+  ],
+  "compounds": [
+    {
+      "name": "FE+BE",
+      "configurations": [
+        "FE-Next.js",
+        "BE-NestJS"
+      ],
+      "stopAll": true
+    }
+  ]
+}

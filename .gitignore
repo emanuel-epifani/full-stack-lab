@@ -18,8 +18,8 @@ out/
 !.env.example
 
 # IDE files
-.vscode/
-.idea/
+# .vscode/
+# .idea/
 *.swp
 *.swo
 *~
